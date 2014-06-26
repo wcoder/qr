@@ -3,32 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		body {
-			font-family: Verdana;
-		}
-		label {
-			display: block;
-		}
-		#qr {
-			display: none;
-		}
-		textarea[name=text] {
-			height: 300px;
-			width: 500px;
-		}
-		button[name=submit] {
-			padding: 10px;
-		}
-	</style>
+    <link rel="stylesheet" href="css/common.css"/>
 </head>
 <body>
 	
-	
+<div class="container">
 	<form id="form" action="#">
 
 		<label>You text:<br>
@@ -59,68 +38,8 @@
 	<div id="info" data-loading="Loading..." data-error="Error loading or incorrect value!"></div>
 
 	<img id="qr" src="/" alt="qr code">
+</div>
 
-
-	<script>
-
-(function(){
-	'use strict';
-
-	
-	var getQRUrl = function(text, ecc, size){
-		var url = 'http://chart.apis.google.com/chart?cht=qr&chs={s}x{s}&chld={e}|0&chl={t}';
-
-		ecc = ecc || 'L';
-		size = size || 200;
-		text = encodeURIComponent(text).replace(/'/g,"%27").replace(/"/g,"%22");
-
-		url = url.replace(/\{s\}/g, size).replace(/\{e\}/, ecc).replace(/\{t\}/, text);
-
-		return url;
-	};
-
-
-	window.onload = function(){
-
-		var form = document.getElementById('form'),
-			info = document.getElementById('info'),
-			qr = document.getElementById('qr');
-
-		qr.onload = function(){
-			this.style.display = 'block';
-			info.innerText = '';
-		};
-
-		qr.onerror = function(e){
-			info.innerText = info.attributes['data-error'].value;
-		};
-
-		form.onsubmit = function(){
-
-			info.innerText = info.attributes['data-loading'].value;
-			qr.style.display = 'none';
-			qr.src = '';
-			qr.src = getQRUrl(this.text.value, this.ecc.value, this.size.value);
-
-			return false;
-		};
-
-        form.text.oninvalid = function (e) {
-
-            info.innerText = this.validationMessage;
-            this.focus();
-
-            return false;
-        };
-
-	};
-
-
-}());
-
-
-
-
-	</script>
+    <script src="js/common.js"></script>
 </body>
 </html>

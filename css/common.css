@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Verdana,serif;
+}
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+label {
+    display: block;
+}
+#qr {
+    display: none;
+}
+textarea[name=text] {
+    height: 200px;
+    max-width: 480px;
+    min-width: 480px;
+    width: 480px;
+    padding: 10px;
+}
+button[name=submit] {
+    padding: 10px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: Verdana;
+		}
+		label {
+			display: block;
+		}
+		#qr {
+			display: none;
+		}
+		textarea[name=text] {
+			height: 300px;
+			width: 500px;
+		}
+		button[name=submit] {
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	
+	
+	<form id="form" action="#">
+
+		<label>You text:<br>
+			<textarea name="text" required="required"></textarea>
+		</label>
+		<label>Size:<br>
+			<select name="size" required="required">
+				<option value="50">50x50</option>
+				<option value="75">75x75</option>
+				<option value="100">100x100</option>
+				<option value="200" selected="selected">200x200</option>
+				<option value="250">250x250</option>
+				<option value="300">300x300</option>
+			</select>
+		</label>
+		<label><a href="http://en.wikipedia.org/wiki/Error-correcting_code">ECC</a>:<br>
+			<select name="ecc" required="required">
+				<option value="L" selected="selected">L - smallest</option>
+				<option value="M">M</option>
+				<option value="Q">Q</option>
+				<option value="H">H - best</option>
+			</select>
+		</label>
+		<button name="submit" type="submit">GENERATE</button>
+
+	</form>
+
+	<div id="info" data-loading="Loading..." data-error="Error loading or incorrect value!"></div>
+
+	<img id="qr" src="/" alt="qr code">
+
+
+	<script>
+
+(function(){
+	'use strict';
+
+	
+	var getQRUrl = function(text, ecc, size){
+		var url = 'http://chart.apis.google.com/chart?cht=qr&chs={s}x{s}&chld={e}|0&chl={t}';
+
+		ecc = ecc || 'L';
+		size = size || 200;
+		text = encodeURIComponent(text).replace(/'/g,"%27").replace(/"/g,"%22");
+
+		url = url.replace(/\{s\}/g, size).replace(/\{e\}/, ecc).replace(/\{t\}/, text);
+
+		return url;
+	};
+
+
+	window.onload = function(){
+
+		var form = document.getElementById('form'),
+			info = document.getElementById('info'),
+			qr = document.getElementById('qr');
+
+		qr.onload = function(){
+			this.style.display = 'block';
+			info.innerText = '';
+		};
+
+		qr.onerror = function(e){
+			info.innerText = info.attributes['data-error'].value;
+		};
+
+		form.onsubmit = function(){
+
+			info.innerText = info.attributes['data-loading'].value;
+			qr.style.display = 'none';
+			qr.src = '';
+			qr.src = getQRUrl(this.text.value, this.ecc.value, this.size.value);
+
+			return false;
+		};
+
+	};
+
+
+}());
+
+
+
+
+	</script>
+</body>
+</html>

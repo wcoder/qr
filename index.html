@@ -105,6 +105,14 @@
 			return false;
 		};
 
+        form.text.oninvalid = function (e) {
+
+            info.innerText = this.validationMessage;
+            this.focus();
+
+            return false;
+        };
+
 	};
 
 

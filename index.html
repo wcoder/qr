@@ -2,44 +2,85 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>QR-code generator</title>
     <link rel="stylesheet" href="css/common.css"/>
 </head>
 <body>
 	
 <div class="container">
-	<form id="form" action="#">
 
-		<label>You text:<br>
-			<textarea name="text" required="required"></textarea>
-		</label>
-		<label>Size:<br>
-			<select name="size" required="required">
-				<option value="50">50x50</option>
-				<option value="75">75x75</option>
-				<option value="100">100x100</option>
-				<option value="200" selected="selected">200x200</option>
-				<option value="250">250x250</option>
-				<option value="300">300x300</option>
-			</select>
-		</label>
-		<label><a href="http://en.wikipedia.org/wiki/Error-correcting_code">ECC</a>:<br>
-			<select name="ecc" required="required">
-				<option value="L" selected="selected">L - smallest</option>
-				<option value="M">M</option>
-				<option value="Q">Q</option>
-				<option value="H">H - best</option>
-			</select>
-		</label>
-		<button name="submit" type="submit">GENERATE</button>
+    <div class="left form">
+        <form id="form" action="#">
 
-	</form>
+            <label>You text:<br>
+                <textarea name="text" required="required"></textarea>
+            </label>
+            <div class="settings">
+                <div class="left">
+                    <label>Size:<br>
+                        <select name="size" required="required">
+                            <option value="50">50x50</option>
+                            <option value="75">75x75</option>
+                            <option value="100">100x100</option>
+                            <option value="200" selected="selected">200x200</option>
+                            <option value="250">250x250</option>
+                            <option value="300">300x300</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="left">
+                    <label><a href="http://en.wikipedia.org/wiki/Error-correcting_code">ECC</a>:<br>
+                        <select name="ecc" required="required">
+                            <option value="L" selected="selected">L - smallest</option>
+                            <option value="M">M</option>
+                            <option value="Q">Q</option>
+                            <option value="H">H - best</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="right">
+                <button name="submit" type="submit">GENERATE</button>
+            </div>
 
-	<div id="info" data-loading="Loading..." data-error="Error loading or incorrect value!"></div>
+            <div class="clear">
+                <div id="info" data-loading="Loading..." data-error="Error loading or incorrect value!"></div>
+            </div>
 
-	<img id="qr" src="/" alt="qr code">
+        </form>
+    </div>
+    <div class="right image">
+        <img id="qr" src="/" alt="qr code">
+    </div>
+
 </div>
 
-    <script src="js/common.js"></script>
+<script src="js/common.js"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter25399772 = new Ya.Metrika({id:25399772,
+                    webvisor:true,
+                    clickmap:true});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25399772" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

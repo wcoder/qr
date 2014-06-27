@@ -7,7 +7,7 @@
 
 		ecc = ecc || 'L';
 		size = size || 200;
-		text = encodeURIComponent(text.trim()).replace(/'/g,"%27").replace(/"/g,"%22");
+		text = encodeURIComponent(text).replace(/'/g,"%27").replace(/"/g,"%22");
 
 		url = url.replace(/\{s\}/g, size).replace(/\{e\}/, ecc).replace(/\{t\}/, text);
 
@@ -35,7 +35,12 @@
 			info.innerText = info.attributes['data-loading'].value;
 			qr.style.display = 'none';
 			qr.src = '';
-			qr.src = getQRUrl(this.text.value, this.ecc.value, this.size.value);
+
+			var text = this.text.value;
+			if (typeof ''.trim != 'undefined') {
+				text = text.trim();
+			}
+			qr.src = getQRUrl(text, this.ecc.value, this.size.value);
 
 			return false;
 		};

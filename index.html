@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>QR Code Utils</title>
-    <link rel="stylesheet" href="css/common.min.css?v=1.0"/>
+    <link rel="stylesheet" href="css/common.min.css?v=1.1"/>
     <link rel="shortcut icon" href="/favicon.ico"/>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <form id="form" action="#">
 
             <label>You text:<br>
-                <textarea name="text" required="required"></textarea>
+                <textarea name="text" required="required" placeholder="Enter your text here"></textarea>
             </label>
             <div class="settings">
                 <div class="left">
@@ -23,17 +23,17 @@
                             <option value="50">50x50</option>
                             <option value="75">75x75</option>
                             <option value="100">100x100</option>
-                            <option value="200" selected="selected">200x200</option>
+                            <option value="200">200x200</option>
                             <option value="250">250x250</option>
-                            <option value="300">300x300</option>
+                            <option value="300" selected="selected">300x300</option>
                         </select>
                     </label>
                 </div>
                 <div class="left">
                     <label><a href="http://en.wikipedia.org/wiki/Error-correcting_code">ECC</a>:<br>
                         <select name="ecc" required="required">
-                            <option value="L" selected="selected">L - smallest</option>
-                            <option value="M">M</option>
+                            <option value="L">L - smallest</option>
+                            <option value="M" selected="selected">M</option>
                             <option value="Q">Q</option>
                             <option value="H">H - best</option>
                         </select>
@@ -50,13 +50,14 @@
 
         </form>
     </div>
-    <div class="right image">
-        <img id="qr" src="/" alt="qr code">
+    <div class="left">
+        <canvas id="qr"></canvas>
     </div>
 
 </div>
 
-<script src="js/common.min.js?v=1.0"></script>
+<script src="js/bundle.js?v=1.0"></script>
+
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(91580769, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/91580769" style="position:absolute; left:-9999px;" alt="" /></div></noscript>

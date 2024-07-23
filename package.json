@@ -1,0 +1,30 @@
+{
+  "name": "qr",
+  "version": "2.0.0",
+  "description": "Simple QR Code Utils",
+  "private": true,
+  "scripts": {
+    "build": "cd js && npx browserify main.js > bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wcoder/qr.git"
+  },
+  "keywords": [
+    "qrcode",
+    "qr"
+  ],
+  "author": "Yauheni Pakala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wcoder/qr/issues"
+  },
+  "homepage": "https://github.com/wcoder/qr#readme",
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  }
+}

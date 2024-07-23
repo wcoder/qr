@@ -14,7 +14,7 @@ textarea, select {
     outline: none;
 }
 .container {
-    width: 850px;
+    max-width: 500px;
     margin: 0 auto;
     margin-top: 50px;
 }
@@ -25,13 +25,7 @@ textarea, select {
     float: left;
 }
 .form {
-    width: 500px;
-}
-.image {
-    width: 300px;
-    line-height: 300px;
-    height: 300px;
-    text-align: center;
+    max-width: 500px;
 }
 .clear {
     clear: both;
@@ -53,8 +47,12 @@ label {
     color: #333;
 }
 #qr {
-    display: none;
-    margin-top: 13px;
+    margin-top: 40px;
+    width: 300px;
+    height: 300px;
+}
+#qr.image {
+    border: 1px solid #95a5a6;
 }
 #info {
     padding: 20px 0;
